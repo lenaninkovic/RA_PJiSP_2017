@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <math.h>
+
 int main() {
- float a = 2.0;
- float b = 4.0;
- float c = 5.0;
- float s, P;
+    double a = 2.0;
+    double b = 4.0;
+    double c = 5.0;
+    double s, P;
 
- s = (a+b+c) / 2;
- P = sqrt( s*(s-a)*(s-b)*(s-c));
+    s = (a + b + c) / 2;
+    P = sqrt(s * (s - a) * (s - b) * (s - c));
 
- printf("P = %f\n",P);
+    printf("P = %lf\n", P);
 
- return 0;
+    return 0;
 }
