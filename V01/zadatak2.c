@@ -10,12 +10,12 @@ int main() {
     double a, b, c;
     double s, P;
     
-	printf("Unesite vrednost stranice a: ");
-	scanf("%lf", &a);
-	printf("Unesite vrednost stranice b: ");
-	scanf("%lf", &b);
-	printf("Unesite vrednost stranice c: ");
-	scanf("%lf", &c);
+    printf("Unesite vrednost stranice a: ");
+    scanf("%lf", &a);
+    printf("Unesite vrednost stranice b: ");
+    scanf("%lf", &b);
+    printf("Unesite vrednost stranice c: ");
+    scanf("%lf", &c);
 
     s = (a + b + c) / 2;
     P = sqrt(s * (s - a) * (s - b) * (s - c));
