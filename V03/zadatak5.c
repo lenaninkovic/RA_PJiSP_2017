@@ -11,16 +11,16 @@
 
 int main() {
 	double A[MAX_N][MAX_M];
-	double S[MAX_N]; //i-ti član niza sadrži sumu i-te kolone
-	int n, m; //Veličine matrice
+	double S[MAX_N]; // i-ti član niza sadrži sumu i-te kolone
+	int n, m; // Veličine matrice
 	int i, j, k;
 
-	printf("n= ");
+	printf("n = ");
 	scanf("%d", &n);
-	printf("m= ");
+	printf("m = ");
 	scanf("%d", &m);
 
-	//Učitavanje matrice
+	// Učitavanje matrice
 	printf("Unesite elemente matrice: \n");
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < m; j++) {
@@ -30,40 +30,49 @@ int main() {
 	}
 
 	// Ispisivanje matrice, cisto radi lakse preglednosti
-	    for(i = 0;i < n;i++) {
-			for(j = 0;j < m;j++) {
+	for(i = 0;i < n; i++) {
+			for(j = 0; j < m; j++) {
 				printf("%lf\t", A[i][j]);
 			}
-		printf("\n");
-	    }
+			printf("\n");
+	}
 
-	//Računanje suma kolona
-	for (i = 0; i < n; i++) {
-		S[i] = 0; //Nuliranje sume
-		for (j = 0; j < m; j++) {
-			S[i] += A[i][j]; //Dodavanje članova kolone u sumu
+	// Računanje suma kolona
+	for (j = 0; j < m; j++) {
+		S[j] = 0; // Elementa vektora koji sadrzi sumu za j-tu kolonu
+		for (i = 0; i < n; i++) {
+			S[j] += A[i][j]; // Dodavanje članova kolone u sumu
 		}
 	}
 
-	//Proces sortiranja
-	for (i = 0; i < n; i++) {
-		for (j = i; j < n; j++) {
-			//Promene mesta kolonama
+	// Ispis sluzi kao provera da li su kolone sumirane kako treba
+	printf("Niz suma kolona matrice: ");
+	for (j = 0; j < m; j++) {
+		printf("%lf ", S[j]);
+	}
+	printf("\n");
+
+	// Proces sortiranja
+	// Promenljive 'i' i 'j' odredjuju redne brojeve kolona u matrici
+	for (i = 0; i < m; i++) {
+		for (j = i; j < m; j++) {
+			// Promene mesta kolonama
 			if (S[i] > S[j]) {
-				for (k = 0; k < m; k++) {
-					double t = A[i][k];
-					A[i][k] = A[j][k];
-					A[j][k] = t;
+				// Promenljiva 'k' za fiksirano 'i' i 'j' iterira kroz sve elemente te dve kolone.
+				for (k = 0; k < n; k++) {
+					double t = A[k][i];
+					A[k][i] = A[k][j];
+					A[k][j] = t;
 				}
-				//Promena vrednosti niza
+				// Promena vrednosti niza
 				double p = S[i];
 				S[i] = S[j];
 				S[j] = p;
 			}
 		}
 	}
-	
-	//Ispisivanje matrice
+
+	// Ispisivanje matrice
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < m; j++) {
 			printf("%.2lf ", A[i][j]);
