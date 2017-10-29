@@ -15,9 +15,9 @@ int main() {
 	int n, m; //Veličine matrice
 	int i, j, k;
 
-	printf("n= ");
+	printf("n = ");
 	scanf("%d", &n);
-	printf("m= ");
+	printf("m = ");
 	scanf("%d", &m);
 
 	//Učitavanje matrice
@@ -30,20 +30,27 @@ int main() {
 	}
 
 	// Ispisivanje matrice, cisto radi lakse preglednosti
-	    for(i = 0;i < n;i++) {
+	for(i = 0;i < n;i++) {
 			for(j = 0;j < m;j++) {
 				printf("%lf\t", A[i][j]);
 			}
-		printf("\n");
-	    }
+			printf("\n");
+	}
 
 	//Računanje suma kolona
-	for (i = 0; i < n; i++) {
-		S[i] = 0; //Nuliranje sume
-		for (j = 0; j < m; j++) {
-			S[i] += A[i][j]; //Dodavanje članova kolone u sumu
+	for (j = 0; j < m; j++) {
+		S[j] = 0; // Elementa vektora koji sadrzi sumu za j-tu kolonu
+		for (i = 0; i < n; i++) {
+			S[j] += A[i][j]; //Dodavanje članova kolone u sumu
 		}
 	}
+
+	// Ispis sluzi kao provera da li su kolone sumirane kako treba
+	printf("Niz suma kolona matrice: ");
+	for (j = 0; j < m; j++) {
+		printf("%lf ", S[j]);
+	}
+	printf("\n");
 
 	//Proces sortiranja
 	for (i = 0; i < n; i++) {
@@ -62,7 +69,7 @@ int main() {
 			}
 		}
 	}
-	
+
 	//Ispisivanje matrice
 	for (i = 0; i < n; i++) {
 		for (j = 0; j < m; j++) {
