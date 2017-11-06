@@ -1,0 +1,43 @@
+/*
+Napisati program koji od korisnika
+učitava niz stringova i ispisuje ih na
+ekran. Program treba od korisnika
+najpre da učita dužinu niza (odnosno
+broj stringova), a zatim svaki string.
+*/
+
+#include <stdio.h>
+#define max_size 30
+
+void ucitaj(char niz[max_size][max_size], int *pn);
+void ispisi(char niz[max_size][max_size], int n);
+
+int main() {
+	
+	char str[max_size][max_size];
+	int n;
+	
+	ucitaj(str, &n);
+	ispisi(str, n); 	
+	return 0;
+}
+
+void ucitaj(char niz[max_size][max_size], int *pn){
+	do{
+		printf("Unesite broj stringova koje zelite da upisete do maksimalno %d: ", max_size);
+		scanf("%d", pn);
+	} while(*pn<=0 || *pn>max_size);
+	
+	int i;
+	for(i=0; i<*pn; i++) {
+		printf("Unesite %d. string: ", i+1);
+		scanf("%s", niz[i]);
+	}
+
+}
+void ispisi(char niz[max_size][max_size], int n){
+	int i;
+	for(i=0; i<n; i++) {
+		printf("%d. string: %s\n", i+1, niz[i]);
+	}
+}

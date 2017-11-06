@@ -8,20 +8,20 @@ vrednost površine trougla na dve decimale.
 #include <math.h>
 int main()
 {
-    double a,b,c;
-    double s,P;
+    float a,b,c;
+    float s,P;
     
 	printf("Unesite vrednost stranice a: ");
-	scanf("%d", &a);
+	scanf("%f", &a);
 	printf("Unesite vrednost stranice b: ");
-	scanf("%d", &b);
+	scanf("%f", &b);
 	printf("Unesite vrednost stranice c: ");
-	scanf("%d", &c);
+	scanf("%f", &c);
 
-    s = (a + b + c)/2;
-    P = sqrt(s * (s-a) * (s-b) * (s-c));
+    s=(a+b+c)/2;
+    P=sqrt( s*(s-a)*(s-b)*(s-c));
     
-    printf("P = %.2d\n",P);
+    printf("P = %.2f\n",P);
     
     return 0;
 }
