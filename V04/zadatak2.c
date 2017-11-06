@@ -33,24 +33,22 @@ int main() {
 	
 	//izbacivanje razmaka
 	j = 0;
-	for (i = 0; i < (int)strlen(niz); i++) {
+	for (i = 0; i < strlen(niz); i++) {
 		if(niz[i]!= ' ' && niz[i] != '\t') {
 			b[j] = niz[i];
 			j++;
 		}
 	}
 	b[j] = '\0';
-	int ind = 0;
+	int nijePolindrom = 1;
 	
 	//provera da li je palindrom
-	for(i = 0, j = (int)strlen(b) - 1; i < (int)strlen(b)/2; i++, j--){
-		if(b[i] == b[j])
-			ind = 1;
-		else 
-			ind = 2;
+	for(i = 0, j = strlen(b) - 1; i < strlen(b)/2; i++, j--){
+		if(b[i] != b[j])
+			nijePolindrom = 0;
 	}
 	
-	if (ind == 1) printf("String je palindrom. \n");
+	if (nijePolindrom == 1) printf("String je palindrom. \n");
 	else printf("String nije palindrom.\n");
 	
 	return 0;

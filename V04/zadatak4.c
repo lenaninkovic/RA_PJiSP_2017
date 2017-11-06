@@ -24,13 +24,10 @@ int main() {
 	__fpurge(stdin);
 	scanf("%c", &c);
 	
-	for(i = 0; i < (int)strlen(string); i++ )
+	for(i = 0; i < strlen(string); i++ )
 		if(string[i] == c) {
 			brojac++;
 		}
-	
-	
-
 	
 	printf("Broj ponavljanja karaktera %c u stringu %s je %d\n", c, string, brojac);
 	

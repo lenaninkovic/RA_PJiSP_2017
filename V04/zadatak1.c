@@ -32,7 +32,6 @@ int main() {
 	printf("\n");
 	
 	printf("Bez upotrebe funkcije strlen: \n");
-	//jer mi ne racunamo poslednji karakter \0 kao sto prebrojava funkcija strlen
 	
 	//brojimo koliko ima znakova
 	int brojac = 0;
