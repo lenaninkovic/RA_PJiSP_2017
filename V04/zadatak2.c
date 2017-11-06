@@ -40,15 +40,15 @@ int main() {
 		}
 	}
 	b[j] = '\0';
-	int nijePolindrom = 1;
+	int nijePalindrom = 1;
 	
 	//provera da li je palindrom
 	for(i = 0, j = strlen(b) - 1; i < strlen(b)/2; i++, j--){
 		if(b[i] != b[j])
-			nijePolindrom = 0;
+			nijePalindrom = 0;
 	}
 	
-	if (nijePolindrom == 1) printf("String je palindrom. \n");
+	if (!nijePalindrom) printf("String je palindrom. \n");
 	else printf("String nije palindrom.\n");
 	
 	return 0;
