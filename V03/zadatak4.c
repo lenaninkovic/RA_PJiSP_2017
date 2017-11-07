@@ -3,6 +3,7 @@
 *	matrice sa realnim elementima. Na početku
 *	programa potrebno je učitati dimenziju i
 *	elemente matrice. (Zadatak 3.12 iz zbirke L. K.)
+
 */
 
 #include <stdio.h>
