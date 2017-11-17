@@ -5,11 +5,14 @@
 	Naci tacku koja je
 	najudaljenija.
 	Realizovati vektorski proizvod.
+	Učitati dva kompleksna broja, realizovati sabiranje i
+	oduzimanje kompleksnih brojeva.
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <complex.h>
 #define MAX_SIZE 30
 
 typedef struct tacka_st {
@@ -23,6 +26,7 @@ float rastojanje(TACKA, TACKA);
 void najbliza(TACKA*, int);
 void najdalja(TACKA *, int);
 void vektorski_proizvod(TACKA*);
+void kompleksni();
 
 int main() {
 
@@ -34,6 +38,8 @@ int main() {
     najbliza(niz, n);
     najdalja(niz, n);
     vektorski_proizvod(niz);
+	kompleksni();
+	
     
     return 0;
 }
@@ -135,4 +141,25 @@ void vektorski_proizvod(TACKA *niz) {
     ispisi_jednu(t2);
     printf(" rezultat vektorskog proizvoda je: ");
     ispisi_jednu(rezultat);
+}
+
+void kompleksni() {
+	double complex z1, z2;
+	float x, y, p, q;
+	
+	printf("\n\nUnesite dva kompleksna broja: ( u formatu: r1 img1, r2 img2)\n");
+	scanf("%f %f, %f %f", &x, &y, &p, &q);
+	
+	z1 = (x + y * I);
+    z2 = (p + q * I);
+   
+	
+	printf("Uneti brojevi: Z1 = %.2f + (%.2fi)\tZ2 = %.2f + (%.2fi)\n", creal(z1), cimag(z1), creal(z2), cimag(z2));
+
+	double complex sum = z1 + z2;
+	printf("Suma: Z1 + Z2 = %.2f %+.2fi\n", creal(sum), cimag(sum));
+
+	double complex difference = z1 - z2;
+	printf("Razlika: Z1 - Z2 = %.2f %+.2fi\n", creal(difference), cimag(difference));
+
 }
