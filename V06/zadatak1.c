@@ -146,14 +146,14 @@ void vektorski_proizvod(TACKA *niz) {
 void kompleksni() {
 	double complex z1, z2;
 	float x, y, p, q;
-	
+
 	printf("\n\nUnesite dva kompleksna broja: ( u formatu: r1 img1, r2 img2)\n");
 	scanf("%f %f, %f %f", &x, &y, &p, &q);
-	
+
 	z1 = (x + y * I);
-    z2 = (p + q * I);
-   
-	
+	z2 = (p + q * I);
+
+
 	printf("Uneti brojevi: Z1 = %.2f + (%.2fi)\tZ2 = %.2f + (%.2fi)\n", creal(z1), cimag(z1), creal(z2), cimag(z2));
 
 	double complex sum = z1 + z2;
