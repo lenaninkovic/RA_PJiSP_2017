@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX_NAME 30
 #define MAX_STRING 101
 
 FILE *safe_open(char*, char*);
