@@ -11,7 +11,7 @@
 	ocenu svih studenata
 */
 
-//PRIMER POZIVA ./zadatak5 studenti
+//PRIMER POZIVA ./zadatak5 studenti.txt
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -17,28 +17,17 @@
 #include <stdlib.h>
 
 FILE *safe_open(char*, char*);
-void kodiraj(FILE *ul_dat, FILE *izl_dat);
-void dekodiraj(FILE *ul_dat, FILE *izl_dat);
+void kodiraj(char *ul_dat, char *izl_dat);
+void dekodiraj(char *ul_dat, char *izl_dat);
 
 int main() {
 
-    FILE *in, *code, *decode;
-    char sin[] = "ulazna";
+    char sin[] = "ulazna.txt";
     char scode[] = "kodirana.txt";
     char sdecode[] = "dekodirana.txt";
 
-    in = safe_open(sin, "r");
-    code = safe_open(scode, "w");
-    decode = safe_open(sdecode, "w");
-
-    kodiraj(in, code);
-    fclose(code);
-    code = safe_open(scode, "r");
-    dekodiraj(code, decode);
-
-    fclose(in);
-    fclose(code);
-    fclose(decode);
+    kodiraj(sin, scode);
+    dekodiraj(scode, sdecode);
 
     return 0;
 }
@@ -54,15 +43,37 @@ FILE *safe_open(char *name, char *mode) {
     return fp;
 }
 
-void kodiraj(FILE *ul_dat, FILE *izl_dat) {
+void kodiraj(char *ul_dat, char *izl_dat) {
     char c;
-    while ((c=fgetc(ul_dat)) != EOF) {
-        fprintf(izl_dat, "%c", c+1);
+    FILE *in, *code;
+    
+    in = safe_open(ul_dat, "r");
+    code = safe_open(izl_dat, "w");
+    
+    while ((c=fgetc(in)) != EOF) {
+    	if(isalpha(c) > 0)
+        	fprintf(code, "%c", c+1);
+        else
+        	fprintf(code, "%c", c);
     }
+    
+    fclose(in);
+    fclose(code);
 }
-void dekodiraj(FILE *ul_dat, FILE *izl_dat) {
+void dekodiraj(char *ul_dat, char *izl_dat) {
     char c;
-    while ((c=fgetc(ul_dat)) != EOF) {
-        fprintf(izl_dat, "%c", c-1);
+    FILE *code, *decode;
+    
+    code = safe_open(ul_dat, "r");
+    decode = safe_open(izl_dat, "w");
+
+    while ((c=fgetc(code)) != EOF) {
+    	if(isalpha(c - 1) > 0)
+        	fprintf(decode, "%c", c-1);
+        else
+        	fprintf(decode, "%c", c);
     }
+    
+    fclose(code);
+    fclose(decode);
 }
