@@ -1,3 +1,4 @@
+/* Izlaz iz programa se ne vrsi na Esc, vec na  broj ponudjen u korisnickom meniju */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
