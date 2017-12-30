@@ -3,19 +3,22 @@
 
 #define MAX_MARKA 21
 
-typedef struct {
+typedef struct
+{
     char marka[MAX_MARKA];
     unsigned int kubikaza;
     int godina;
 } automobil_t;
 
-typedef struct node {
+typedef struct node
+{
     struct node *left;
     struct node *right;
     automobil_t value;
 } node_t, *tree_t;
 
-void insert(tree_t *tree, automobil_t a) {
+void insert(tree_t *tree, automobil_t a)
+{
     if (*tree == NULL)
     {
         node_t *new = malloc(sizeof(node_t));
@@ -33,7 +36,8 @@ void insert(tree_t *tree, automobil_t a) {
     }
 }
 
-void deltree(tree_t *tree) {
+void deltree(tree_t *tree)
+{
     if (*tree != NULL)
     {
         deltree(&(*tree)->left);
@@ -43,7 +47,8 @@ void deltree(tree_t *tree) {
     }
 }
 
-void ucitaj(FILE *file, tree_t *tree) {
+void ucitaj(FILE *file, tree_t *tree)
+{
     automobil_t a;
     deltree(tree);
 
@@ -53,7 +58,8 @@ void ucitaj(FILE *file, tree_t *tree) {
     }
 }
 
-automobil_t *pronadji(tree_t tree, char *marka) {
+automobil_t *pronadji(tree_t tree, char *marka)
+{
     if (tree == NULL) return NULL;
 
     if (strcmp(marka, tree->value.marka) == 0)
@@ -70,12 +76,14 @@ automobil_t *pronadji(tree_t tree, char *marka) {
     }
 }
 
-void ispis(FILE *file, automobil_t *a) {
+void ispis(FILE *file, automobil_t *a)
+{
     if (a != NULL) fprintf(file, "%s %u %d\n", a->marka, a->kubikaza, a->godina);
     else printf("Trazeni automobil ne postoji\n");
 }
 
-int brisanje(tree_t *tree, char *marka) {
+int brisanje(tree_t *tree, char *marka)
+{
     if (*tree == NULL) return 0;
 
     if (strcmp(marka, (*tree)->value.marka) == 0)
@@ -108,8 +116,8 @@ int brisanje(tree_t *tree, char *marka) {
                 p = p->left;
             }
 
-            if (q->left == p) q->left = NULL;
-            else if (q->right == p) q->right = NULL;
+            if (q->left == p) q->left = p->right;
+            else if (q->right == p) q->right = p->right;
 
             node->value = p->value;
             free(p);
@@ -125,7 +133,8 @@ int brisanje(tree_t *tree, char *marka) {
     }
 }
 
-void snimi(FILE *file, tree_t tree) {
+void snimi(FILE *file, tree_t tree)
+{
     if (tree)
     {
         snimi(file, tree->left);
@@ -134,7 +143,8 @@ void snimi(FILE *file, tree_t tree) {
     }
 }
 
-automobil_t *najnoviji(tree_t tree, unsigned kubikaza) {
+automobil_t *najnoviji(tree_t tree, unsigned kubikaza)
+{
     automobil_t *rezultat = NULL;
     if (tree == NULL) return NULL;
 
@@ -157,7 +167,8 @@ automobil_t *najnoviji(tree_t tree, unsigned kubikaza) {
     }
 }
 
-int main(void) {
+int main(void)
+{
     int radi = 1;
     tree_t tree = NULL;
 
